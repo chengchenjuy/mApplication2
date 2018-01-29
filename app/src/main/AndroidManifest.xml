@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.lenovo.mapplication"
+    android:versionCode="1"
+    android:versionName="0.1">
+
+    <application
+        android:allowBackup="false"
+        android:allowClearUserData="true"
+        android:gravity="center"
+        android:icon="@mipmap/ic_launcher"
+        android:label="车凤凰"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Activity.WelcomeActivity"
+            android:alwaysRetainTaskState="true"
+            android:screenOrientation="nosensor"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activity.Reg" />
+        <activity android:name=".Activity.UserActivity" />
+        <activity android:name=".Activity.head" />
+        <activity android:name=".Activity.MainActivity" />
+        <activity android:name=".Activity.myinfo" />
+        <activity android:name=".Activity.baoyang" />
+        <activity android:name=".Activity.repier" />
+        <activity android:name=".Activity.changeusername" />
+        <activity android:name=".Activity.launcher" />
+        <activity android:name=".Activity.BaoyangReport" />
+        <activity android:name=".Activity.BaoyangList"></activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">mApplication</string>
+    <string name="title_activity_header">header</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">开始体验</string>
+
+    <string name="slide_1_title">Lonely</string>
+    <string name="slide_2_title">Meet</string>
+    <string name="slide_3_title">Fall in love at first sight</string>
+    <string name="slide_4_title">Both fall in love</string>
+    <string name="slide_5_title">Together forever</string>
+
+    <string name="play_again">play again</string>
+</resources>

@@ -43,20 +43,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnLogin.setOnClickListener(this);
         zhuce = findViewById(R.id.btn_zhuce);
         zhuce.setOnClickListener(this);
-        jizhumima = findViewById(R.id.jizhumima);
 
-        if (jizhumima.isChecked()){
-            SharedPreferences mima = getSharedPreferences("mm",Context.MODE_PRIVATE);
-            SharedPreferences.Editor nima = mima.edit();
-            nima.putString("nn",etID.getText().toString());
-            nima.putString("bb",etPrssword.getText().toString());
-            nima.commit();
-            SharedPreferences mani = getSharedPreferences("mm",Context.MODE_PRIVATE);
-            String jizhudeid = mani.getString("nn","");
-            String jizhudemima = mani.getString("bb","");
-            etID.setText(jizhudeid);
-            etID.setText(jizhudemima);
-        }
+
+
 
 
     }
@@ -72,17 +61,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.i("msg", "showMsg----->" + phone);
                 if (etID.getText().toString().equals("139") & etPrssword.getText().toString().equals("cc")) {
                     Toast.makeText(this, "登录成功！", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(this, UserActivity.class);
-                    startActivity(intent);
                     etID.setText("");
                     etPrssword.setText("");
+                    SharedPreferences login = getSharedPreferences("login",Context.MODE_PRIVATE);
+                    SharedPreferences.Editor boo = login.edit();
+                    boo.putString("co","yes");
+                    boo.commit();
+                    Intent intent = new Intent(this, UserActivity.class);
+                    startActivity(intent);
+                    finish();
 
                 } else if (etID.getText().toString().equals(phone) & etPrssword.getText().toString().equals(password)) {
                     Toast.makeText(this, "登录成功！", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(this, UserActivity.class);
-                    startActivity(intent);
                     etID.setText("");
                     etPrssword.setText("");
+                    SharedPreferences login = getSharedPreferences("login",Context.MODE_PRIVATE);
+                    SharedPreferences.Editor boo = login.edit();
+                    boo.putString("co","yes");
+                    Intent intent = new Intent(this, UserActivity.class);
+                    startActivity(intent);
+                    finish();
                 } else {
                     Toast.makeText(this, "账号或密码错误！", Toast.LENGTH_LONG).show();
                 }

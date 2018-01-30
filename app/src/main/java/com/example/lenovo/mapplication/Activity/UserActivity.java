@@ -357,7 +357,7 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
                 && event.getAction() == KeyEvent.ACTION_DOWN) {
             if ((System.currentTimeMillis() - exitTime2) > 2000) {
 
-                Toast.makeText(getApplicationContext(), "再按一次返回登录", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "再按一次退出车凤凰", Toast.LENGTH_LONG).show();
                 exitTime2 = System.currentTimeMillis();
             } else {
                 System.exit(0);

@@ -18,21 +18,41 @@ public class launcher extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences caca = getSharedPreferences("login", Context.MODE_PRIVATE);
+        String dada = caca.getString("co", "");
         //加载启动界面
-        setContentView(R.layout.activity_launcher);
-        Integer time = 3000;    //设置等待时间，单位为毫秒
-        Handler handler = new Handler();
-        //当计时结束时，跳转至主界面
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(launcher.this,MainActivity.class);
-                launcher.this.finish();
-                startActivity(intent);
-                //startActivity(new Intent(launcher.this, MainActivity.class));
+        if (dada.equals("yes")) {
+            setContentView(R.layout.activity_launcher);
+            Integer time = 3000;    //设置等待时间，单位为毫秒
+            Handler handler = new Handler();
+            //当计时结束时，跳转至主界面
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(launcher.this, UserActivity.class);
+                    launcher.this.finish();
+                    startActivity(intent);
+                    //startActivity(new Intent(launcher.this, MainActivity.class));
 
-            }
-        }, time);
+                }
+            }, time);
+        } else {
+            setContentView(R.layout.activity_launcher);
+            Integer time = 3000;    //设置等待时间，单位为毫秒
+            Handler handler = new Handler();
+            //当计时结束时，跳转至主界面
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(launcher.this, MainActivity.class);
+                    launcher.this.finish();
+                    startActivity(intent);
+                }
+            },time);
+        }
+
+    }
+}
 
 //        SimpleDateFormat nian = new SimpleDateFormat("yyyy");
 //        String datenian = nian.format(new java.util.Date());
@@ -55,6 +75,3 @@ public class launcher extends Activity {
 //        editor3.putString("ri1", dateri);
 //        editor3.commit();
 //        //获取日份
-    }
-}
-

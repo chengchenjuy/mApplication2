@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     startActivity(intent);
                     etID.setText("");
                     etPrssword.setText("");
+
                 } else if (etID.getText().toString().equals(phone) & etPrssword.getText().toString().equals(password)) {
                     Toast.makeText(this, "登录成功！", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(this, UserActivity.class);

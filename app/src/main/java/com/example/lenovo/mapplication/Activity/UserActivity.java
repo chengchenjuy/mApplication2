@@ -43,8 +43,10 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private RollPagerView mRollViewPager;
-    private TextView username;
+    private TextView username,baoyangtime,baoyangxiangmu,baoyangcishu;
     private CheckBox cbJantou;
+    private String texts;
+
 
 
     @Override
@@ -80,12 +82,61 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         fenxiang.setOnClickListener(this);
         jianding = findViewById(id.jianding);
         jianding.setOnClickListener(this);
+        baoyangtime = findViewById(R.id.baoyangtime);
+        baoyangxiangmu = findViewById(id.baoyangxiangmu);
+        baoyangcishu = findViewById(id.baoyangcishu);
 
         SharedPreferences na = getSharedPreferences("usernames", Context.MODE_PRIVATE);
         String namer =na.getString("name", "");
         Log.i("msg","-=-=-=-=-=->" +namer);
         TextView username = navigationView.getHeaderView(0).findViewById(id.username);
         username.setText(namer);
+        SharedPreferences time = getSharedPreferences("shijian", Context.MODE_PRIVATE);
+        String t = time.getString("sj","");
+        baoyangtime.setText("上次保养日期："+t);
+        //获取保养日期
+        SharedPreferences cs = getSharedPreferences("c19",Context.MODE_PRIVATE);
+        int css = cs.getInt("d19",0);
+        baoyangcishu.setText("总计保养次数："+css+"次");
+        SharedPreferences a1 = getSharedPreferences("c1", Context.MODE_PRIVATE);
+        String a = a1.getString("d1", "");
+        SharedPreferences a2 = getSharedPreferences("c2", Context.MODE_PRIVATE);
+        String b = a2.getString("d2", "");
+        SharedPreferences a3 = getSharedPreferences("c3", Context.MODE_PRIVATE);
+        String c = a3.getString("d3", "");
+        SharedPreferences a4 = getSharedPreferences("c4", Context.MODE_PRIVATE);
+        String d = a4.getString("d4", "");
+        SharedPreferences a5 = getSharedPreferences("c5", Context.MODE_PRIVATE);
+        String e = a5.getString("d5", "");
+        SharedPreferences a6 = getSharedPreferences("c6", Context.MODE_PRIVATE);
+        String f = a6.getString("d6", "");
+        SharedPreferences a7 = getSharedPreferences("c7", Context.MODE_PRIVATE);
+        String g = a7.getString("d7", "");
+        SharedPreferences a8 = getSharedPreferences("c8", Context.MODE_PRIVATE);
+        String h = a8.getString("d8", "");
+        SharedPreferences a9 = getSharedPreferences("c9", Context.MODE_PRIVATE);
+        String i = a9.getString("d9", "");
+        SharedPreferences a11 = getSharedPreferences("c11", Context.MODE_PRIVATE);
+        String j = a11.getString("d11", "");
+        SharedPreferences a12 = getSharedPreferences("c12", Context.MODE_PRIVATE);
+        String k = a12.getString("d12", "");
+        SharedPreferences a13 = getSharedPreferences("c13", Context.MODE_PRIVATE);
+        String l = a13.getString("d13", "");
+        SharedPreferences a14 = getSharedPreferences("c14", Context.MODE_PRIVATE);
+        String m = a14.getString("d14", "");
+        SharedPreferences a15 = getSharedPreferences("c15", Context.MODE_PRIVATE);
+        String n = a15.getString("d15", "");
+        SharedPreferences a16 = getSharedPreferences("c16", Context.MODE_PRIVATE);
+        String o = a16.getString("d16", "");
+        SharedPreferences a17 = getSharedPreferences("c17", Context.MODE_PRIVATE);
+        String p = a17.getString("d17", "");
+        SharedPreferences a18 = getSharedPreferences("c18", Context.MODE_PRIVATE);
+
+
+        texts = a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p;
+        baoyangxiangmu.setText("上次保养项目："+texts);
+
+
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -120,6 +171,7 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
                     case id.myinf:
                         Intent intent1 = new Intent(UserActivity.this, myinfo.class);
                         startActivity(intent1);
+                        finish();
                         break;
                     case id.report:
                         Intent intent2 = new Intent(UserActivity.this,BaoyangReport.class);
@@ -160,11 +212,13 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
         switch (compoundButton.getId()) {
             case id.jiantou:
+
                 if (b) {
                     xiala2.setVisibility(View.VISIBLE);
                 } else {
                     xiala2.setVisibility(View.GONE);
                 }
+
                 break;
         }
 
@@ -206,6 +260,10 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
                 String namer =na.getString("name", "");
                 TextView username = navigationView.getHeaderView(0).findViewById(id.username);
                 username.setText(namer);
+                baoyangxiangmu.setText("上次保养项目："+texts);
+                SharedPreferences time = getSharedPreferences("shijian", Context.MODE_PRIVATE);
+                String t = time.getString("sj","");
+                baoyangtime.setText("上次保养日期："+t);
 
                 Log.i("msg", "---------->");
                 if (drawerLayout.isDrawerOpen(navigationView)) {
@@ -217,14 +275,22 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
             case id.btn_user:
                 Intent intent2 = new Intent(this, myinfo.class);
                 startActivity(intent2);
+                baoyangxiangmu.setText("上次保养项目："+texts);
+                SharedPreferences time2 = getSharedPreferences("shijian", Context.MODE_PRIVATE);
+                String ti = time2.getString("sj","");
+                baoyangtime.setText("上次保养日期："+ti);
+                finish();
                 break;
             case id.baoyng:
                 Intent intent3 = new Intent(this, BaoyangList.class);
                 startActivity(intent3);
+                finish();
+                baoyangxiangmu.setText("上次保养项目："+texts);
                 break;
             case id.weixiu:
                 Intent intent4 = new Intent(this, repier.class);
                 startActivity(intent4);
+                baoyangxiangmu.setText("上次保养项目："+texts);
                 break;
             case id.jiyou:
                 Toast.makeText(getApplicationContext(), "该功能尚未开放，尽请期待", Toast.LENGTH_LONG).show();

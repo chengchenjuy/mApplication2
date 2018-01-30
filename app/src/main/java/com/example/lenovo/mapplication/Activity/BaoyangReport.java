@@ -42,6 +42,7 @@ public class BaoyangReport extends AppCompatActivity implements View.OnClickList
         t17 = findViewById(R.id.t17);
         t18 = findViewById(R.id.t18);
         t19 = findViewById(R.id.t19);
+
         SharedPreferences a1 = getSharedPreferences("c1", Context.MODE_PRIVATE);
         String a = a1.getString("d1", "");
         SharedPreferences a2 = getSharedPreferences("c2", Context.MODE_PRIVATE);
@@ -79,9 +80,10 @@ public class BaoyangReport extends AppCompatActivity implements View.OnClickList
         SharedPreferences time = getSharedPreferences("shijian", Context.MODE_PRIVATE);
         String t = time.getString("sj","");
 
+
 //        texts = a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p;
         if (a != "" | b != "" | c != "" | d != "" | e != "" | f != "" | g != "" | h != "" | i != "" | j != "" | k != "" | l != "" | m != "" | n != "" | o != "" | p != ""|q != "") {
-            t1.setText("上次的保养时间为"+t+"\n"+"          保养项目：");
+            t1.setText("上次的保养时间为"+t+"\n"+"                  保养项目：");
         } else {
             t1.setText("暂无保养记录");
         }

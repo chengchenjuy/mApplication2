@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -38,6 +39,8 @@ public class myinfo extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.back2:
+                Intent intent = new Intent(this, UserActivity.class);
+                startActivity(intent);
                 finish();
                 break;
             case R.id.changename:
@@ -64,6 +67,13 @@ public class myinfo extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
-
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            Intent intent = new Intent(this, UserActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        return true;
+    }
 
 }

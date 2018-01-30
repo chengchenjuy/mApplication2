@@ -50,14 +50,14 @@
             android:id="@+id/checkBox"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="      机油      "
+            android:text=" 机油 "
             android:background="#ffffff"/>
 
         <CheckBox
             android:id="@+id/checkBox2"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="      变速箱油      "
+            android:text=" 变速箱油 "
             android:background="#ffffff"
             android:layout_marginTop="1dp"/>
 
@@ -65,7 +65,7 @@
             android:id="@+id/checkBox3"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="      转向助力油      "
+            android:text=" 转向助力油 "
             android:background="#ffffff"
             android:layout_marginTop="1dp"/>
 
@@ -73,7 +73,7 @@
             android:id="@+id/checkBox4"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="      刹车油      "
+            android:text=" 刹车油 "
             android:background="#ffffff"
             android:layout_marginTop="1dp"/>
 
@@ -81,7 +81,7 @@
             android:id="@+id/checkBox5"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="      防冻液      "
+            android:text=" 防冻液 "
             android:background="#ffffff"
             android:layout_marginTop="1dp"/>
     </LinearLayout>
@@ -108,14 +108,14 @@
                 android:id="@+id/checkBox6"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="      机油滤芯      "
+                android:text=" 机油滤芯 "
                 android:background="#ffffff"/>
 
             <CheckBox
                 android:id="@+id/checkBox7"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="      汽油滤芯"
+                android:text=" 汽油滤芯 "
                 android:background="#ffffff"
                 android:layout_marginTop="1dp"/>
 
@@ -123,7 +123,7 @@
                 android:id="@+id/checkBox8"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="      空气滤芯      "
+                android:text=" 空气滤芯 "
                 android:background="#ffffff"
                 android:layout_marginTop="1dp"/>
 
@@ -131,7 +131,7 @@
                 android:id="@+id/checkBox9"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="      空调滤芯      "
+                android:text=" 空调滤芯 "
                 android:background="#ffffff"
                 android:layout_marginTop="1dp"/>
 
@@ -158,14 +158,14 @@
                 android:id="@+id/checkBox11"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="      火花塞      "
+                android:text=" 火花塞 "
                 android:background="#ffffff"/>
 
             <CheckBox
                 android:id="@+id/checkBox12"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="      轮胎      "
+                android:text=" 轮胎 "
                 android:background="#ffffff"
                 android:layout_marginTop="1dp"/>
 
@@ -173,7 +173,7 @@
                 android:id="@+id/checkBox13"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="      玻璃水      "
+                android:text=" 玻璃水 "
                 android:background="#ffffff"
                 android:layout_marginTop="1dp"/>
 
@@ -183,7 +183,7 @@
                 android:id="@+id/checkBox14"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="      雨刮条      "
+                android:text=" 雨刮条 "
                 android:background="#ffffff"
                 android:layout_marginTop="1dp"/>
 
@@ -191,21 +191,21 @@
                 android:id="@+id/checkBox15"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="      电瓶      "
+                android:text=" 电瓶 "
                 android:background="#ffffff"
                 android:layout_marginTop="1dp"/>
             <CheckBox
                 android:id="@+id/checkBox16"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="      正时皮带      "
+                android:text=" 正时皮带 "
                 android:background="#ffffff"
                 android:layout_marginTop="1dp"/>
             <CheckBox
                 android:id="@+id/checkBox17"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="      辅助皮带      "
+                android:text=" 辅助皮带 "
                 android:background="#ffffff"
                 android:layout_marginTop="1dp"/>
         </LinearLayout>

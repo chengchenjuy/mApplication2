@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -47,7 +48,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="145dp"
+            android:layout_height="wrap_content"
             android:background="#3a3a3a">
 
 
@@ -55,30 +56,38 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
                 android:src="@mipmap/bmw" />
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="30dp"
+                android:layout_margin="5dp"
+
                 android:orientation="vertical">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="宝马一系"
-                    android:textColor="#ffffff"
-                    android:textSize="18dp" />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="C66L 1.6T 运动版"
-                    android:textColor="#ffffff"
-                    android:textSize="12dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#ffffff"
+                        android:textSize="18dp"
+                        android:text="宝马一系" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="C66L 1.6T 运动版"
+                        android:textColor="#ffffff"
+                        android:textSize="12dp" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -118,6 +127,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/baoyangtime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="上次保养日期:2017.10.24"
@@ -125,6 +135,7 @@
                         android:textSize="10dp" />
 
                     <TextView
+                        android:id="@+id/baoyangxiangmu"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
 
@@ -134,22 +145,19 @@
 
                 </LinearLayout>
 
-                <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="12dp">
 
-                    <CheckBox
-                        android:id="@+id/jiantou"
-                        android:layout_width="40dp"
-                        android:layout_height="20dp"
-
-                        android:background="@drawable/selector"
-                        android:button="@null"
-                        android:checked="false" />
-                </FrameLayout>
             </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/jiantou"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/selector"
+                android:button="@null"
+                android:checked="false" />
+
 
         </LinearLayout>
 
@@ -173,6 +181,7 @@
                 android:textColor="#ffffff" />
 
             <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -195,6 +204,7 @@
                 android:textColor="#ffffff" />
 
             <TextView
+                android:id="@+id/baoyangcishu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -202,7 +212,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="1dp"
-                android:text="总计保养次数：12次"
+                android:text="总计保养次数：6次"
                 android:textColor="#ffffff" />
         </LinearLayout>
 
@@ -238,7 +248,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="美容" />
+                        android:text="保养" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -406,8 +416,6 @@
 
             </LinearLayout>
         </LinearLayout>
-
-
 
 
     </LinearLayout>

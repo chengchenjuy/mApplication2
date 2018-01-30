@@ -2,10 +2,12 @@ package com.example.lenovo.mapplication.Activity;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -27,6 +29,8 @@ public class BaoyangList extends AppCompatActivity implements View.OnClickListen
     private CheckBox checkBox, checkBox2, checkBox3, checkBox4, checkBox5, checkBox6, checkBox7, checkBox8, checkBox9;
     private CheckBox checkBox11, checkBox12, checkBox13, checkBox14, checkBox15, checkBox16, checkBox17;
     private EditText beizhu;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,8 @@ public class BaoyangList extends AppCompatActivity implements View.OnClickListen
         checkBox15 = findViewById(R.id.checkBox15);
         checkBox16 = findViewById(R.id.checkBox16);
         checkBox17 = findViewById(R.id.checkBox17);
+
+
     }
 
 
@@ -60,6 +66,8 @@ public class BaoyangList extends AppCompatActivity implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.back5:
+                Intent intent = new Intent(this, UserActivity.class);
+                startActivity(intent);
                 finish();
                 break;
             case R.id.tijiao:
@@ -255,6 +263,18 @@ public class BaoyangList extends AppCompatActivity implements View.OnClickListen
                     SharedPreferences.Editor editor = time.edit();
                     editor.putString("sj", date);
                     editor.commit();
+                    SharedPreferences a18 = getSharedPreferences("c18", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor jilu = a18.edit();
+                    jilu.putString("d18", beizhu.getText().toString());
+                    jilu.commit();
+                    SharedPreferences a19 = getSharedPreferences("c19", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor cs = a19.edit();
+                    cs.putInt("d19", 0);
+                    cs.commit();
+
+
+                    Intent intent2 = new Intent(this, UserActivity.class);
+                    startActivity(intent2);
                     finish();
 
                 }else{
@@ -262,12 +282,17 @@ public class BaoyangList extends AppCompatActivity implements View.OnClickListen
                     time.edit().clear().commit();
                     Toast.makeText(getApplicationContext(), "提交数据为空，请选择保养项目！", Toast.LENGTH_LONG).show();
                 }
-                SharedPreferences a18 = getSharedPreferences("c18", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = a18.edit();
-                editor.putString("d18", beizhu.getText().toString());
-                editor.commit();
+
                 break;
         }
+    }
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            Intent intent = new Intent(this, UserActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        return true;
     }
 
 }

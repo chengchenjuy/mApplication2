@@ -17,35 +17,25 @@
         android:layout_margin="3dp"
         app:srcCompat="@mipmap/carlogo" />
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="10dp"
-        android:fontFamily="casual"
-        android:text="车凤凰"
-        android:textColor="#d30111" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp">
 
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_gravity="center"
-            android:gravity="center"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="10dp"
             android:src="@mipmap/phone" />
 
         <EditText
             android:id="@+id/et_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_marginTop="10dp"
         android:hint="请输入注册手机号"
             android:ems="10"
             android:inputType="number" />
@@ -54,13 +44,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp">
 
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_gravity="center"
+
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="10dp"
             android:src="@mipmap/passd"
             />
 
@@ -68,11 +60,21 @@
             android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_marginTop="10dp"
             android:hint="请输入密码"
             android:ems="10"
             android:inputType="textPassword" />
+
+
     </LinearLayout>
+    <CheckBox
+        android:id="@+id/jizhumima"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="记住密码"
+        android:textColor="#909090"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="5dp"/>
 
     <Button
         android:id="@+id/btn_login"
@@ -95,6 +97,71 @@
         android:layout_marginRight="20dp"
         android:background="#d30111"
         android:textColor="#ffffff"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-------------------------------------第三方登录------------------------------------"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:textSize="10dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="20dp">
+
+       <LinearLayout
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:layout_height="60dp"
+           android:orientation="vertical">
+        <ImageView
+    android:layout_width="40dp"
+    android:layout_height="40dp"
+    android:src="@mipmap/weixin"
+            android:layout_gravity="center"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="微信登录"
+               android:textSize="11dp"
+               android:layout_gravity="center"/>
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/qicq"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="QQ登录"
+                android:textSize="11dp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/xinlang"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="微博登录"
+                android:textSize="11dp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+    </LinearLayout>
 
 
 </LinearLayout>

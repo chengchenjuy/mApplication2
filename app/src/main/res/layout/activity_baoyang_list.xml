@@ -243,7 +243,9 @@
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="提交保养记录"
+                android:background="#d30111"
+                android:textColor="#ffffff"
+                android:text="提交保养项目"
                 />
         </LinearLayout>
     </LinearLayout>

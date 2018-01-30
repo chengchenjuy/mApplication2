@@ -16,8 +16,12 @@ import android.widget.Toast;
 
 import com.example.lenovo.mapplication.R;
 
+import java.text.SimpleDateFormat;
+
 public class myinfo extends AppCompatActivity implements View.OnClickListener {
     private TextView back2, changename, myname;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,8 @@ public class myinfo extends AppCompatActivity implements View.OnClickListener {
         String namer = (String)na.getString("name", "");
         myname = findViewById(R.id.myname);
         myname.setText(namer);
+
+
 
     }
 

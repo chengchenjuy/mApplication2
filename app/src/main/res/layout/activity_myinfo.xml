@@ -17,14 +17,7 @@
 
             <include layout="@layout/toolmyinf" />
 
-            <TextView
-                android:id="@+id/back2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:text="返回"
-                android:textColor="#ffffff" />
+
         </FrameLayout>
 
         <LinearLayout

@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="爱车有问题无从下手？"
+            android:text="爱车有问题无从下手..."
             android:textColor="#303030"
             android:textSize="20dp"
             />

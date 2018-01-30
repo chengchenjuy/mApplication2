@@ -9,11 +9,14 @@ import android.util.Log;
 import android.view.View;
 import android.view.KeyEvent;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lenovo.mapplication.R;
+
+import java.util.concurrent.locks.Condition;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -23,6 +26,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText etPrssword;
     private Button btnLogin;
     private Button zhuce;
+    private CheckBox jizhumima;
+
+
 
 
 
@@ -37,7 +43,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnLogin.setOnClickListener(this);
         zhuce = findViewById(R.id.btn_zhuce);
         zhuce.setOnClickListener(this);
+        jizhumima = findViewById(R.id.jizhumima);
 
+        if (jizhumima.isChecked()){
+            SharedPreferences mima = getSharedPreferences("mm",Context.MODE_PRIVATE);
+            SharedPreferences.Editor nima = mima.edit();
+            nima.putString("nn",etID.getText().toString());
+            nima.putString("bb",etPrssword.getText().toString());
+            nima.commit();
+            SharedPreferences mani = getSharedPreferences("mm",Context.MODE_PRIVATE);
+            String jizhudeid = mani.getString("nn","");
+            String jizhudemima = mani.getString("bb","");
+            etID.setText(jizhudeid);
+            etID.setText(jizhudemima);
+        }
 
 
     }

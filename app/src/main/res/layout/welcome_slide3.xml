@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="买配件不知道哪家好？"
+            android:text="买配件不知道哪家好..."
             android:textColor="#303030"
             android:textSize="20dp"
             />

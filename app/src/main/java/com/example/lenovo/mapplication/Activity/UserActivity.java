@@ -7,46 +7,46 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
-import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.lenovo.mapplication.R;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 import com.jude.rollviewpager.hintview.ColorPointHintView;
 
-import com.example.lenovo.mapplication.R;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-import static com.example.lenovo.mapplication.R.*;
+import static com.example.lenovo.mapplication.R.id;
+import static com.example.lenovo.mapplication.R.layout;
+import static com.example.lenovo.mapplication.R.mipmap;
 
 public class UserActivity extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
-    private ImageView btn_xiala, btn_user, menu, baoyang;
+    private ImageView btn_xiala, menu, baoyang;
     private LinearLayout xiala2, baoyng, weixiu, jiyou, lingjian, wheel, bbs, fenxiang, jianding;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private RollPagerView mRollViewPager;
-    private TextView username,baoyangtime,baoyangxiangmu,baoyangcishu;
+    private TextView username, baoyangtime, baoyangxiangmu, baoyangcishu, shanglu,driverkm;
     private CheckBox cbJantou;
     private String texts;
-
 
 
     @Override
@@ -55,8 +55,7 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(layout.activity_user);
 //        initWindow();
 
-        btn_user = findViewById(id.btn_user);
-        btn_user.setOnClickListener(this);
+        shanglu = findViewById(id.shanglu);
         drawerLayout = (DrawerLayout) findViewById(id.activity_na);
         navigationView = (NavigationView) findViewById(id.nav);
         menu = (ImageView) findViewById(id.btn_xiala);
@@ -85,19 +84,19 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         baoyangtime = findViewById(R.id.baoyangtime);
         baoyangxiangmu = findViewById(id.baoyangxiangmu);
         baoyangcishu = findViewById(id.baoyangcishu);
-
+        driverkm = findViewById(id.driverkm);
         SharedPreferences na = getSharedPreferences("usernames", Context.MODE_PRIVATE);
-        String namer =na.getString("name", "");
-        Log.i("msg","-=-=-=-=-=->" +namer);
+        String namer = na.getString("name", "");
+        Log.i("msg", "-=-=-=-=-=->" + namer);
         TextView username = navigationView.getHeaderView(0).findViewById(id.username);
         username.setText(namer);
         SharedPreferences time = getSharedPreferences("shijian", Context.MODE_PRIVATE);
-        String t = time.getString("sj","");
-        baoyangtime.setText("上次保养日期："+t);
+        String t = time.getString("sj", "");
+        baoyangtime.setText("上次保养日期：" + t);
         //获取保养日期
-        SharedPreferences cs = getSharedPreferences("c19",Context.MODE_PRIVATE);
-        int css = cs.getInt("d19",0);
-        baoyangcishu.setText("总计保养次数："+css+"次");
+        SharedPreferences cs = getSharedPreferences("c19", Context.MODE_PRIVATE);
+        int css = cs.getInt("d19", 0);
+        baoyangcishu.setText("总计保养次数：" + css + "次");
         SharedPreferences a1 = getSharedPreferences("c1", Context.MODE_PRIVATE);
         String a = a1.getString("d1", "");
         SharedPreferences a2 = getSharedPreferences("c2", Context.MODE_PRIVATE);
@@ -131,12 +130,41 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         SharedPreferences a17 = getSharedPreferences("c17", Context.MODE_PRIVATE);
         String p = a17.getString("d17", "");
         SharedPreferences a18 = getSharedPreferences("c18", Context.MODE_PRIVATE);
+        String q = a18.getString("d18","");
+
+        texts = a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p +q;
+        baoyangxiangmu.setText("上次保养项目：" + texts);
 
 
-        texts = a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p;
-        baoyangxiangmu.setText("上次保养项目："+texts);
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date d1 = df.parse(df.format(new java.util.Date()));
+            Date d2 = df.parse("2015-10-24");
+            long diff = d1.getTime() - d2.getTime();//这样得到的差值是微秒级别
+            long days = diff / (1000 * 60 * 60 * 24);
+            shanglu.setText("" + days);
+            long km = days*70;
+            driverkm.setText("预估行驶里程："+km+"公里(km)");
+
+        } catch (Exception ee) {
+        }//获取时间差
 
 
+
+//        int year = 2014;
+//        int month = 6;
+//        int day = 13;
+//        SharedPreferences n1 = getSharedPreferences("nian", Context.MODE_PRIVATE);
+//        String nian1 = n1.getString("nian1", "");
+//        SharedPreferences n2 = getSharedPreferences("yue", Context.MODE_PRIVATE);
+//        String yue2 = n2.getString("yue1", "");
+//        SharedPreferences n3 = getSharedPreferences("ri", Context.MODE_PRIVATE);
+//        String ri3 = n3.getString("ri1", "");//获取年月日
+//
+//        int cc1 = Integer.parseInt(nian1) - year;
+//        int nianchazhi = cc1*365;
+//        int cc2 = Integer.parseInt(yue2) - month;
+//        int cc3 = Integer.parseInt(ri3) - day;
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -174,7 +202,7 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
                         finish();
                         break;
                     case id.report:
-                        Intent intent2 = new Intent(UserActivity.this,BaoyangReport.class);
+                        Intent intent2 = new Intent(UserActivity.this, BaoyangReport.class);
                         startActivity(intent2);
 
                 }
@@ -207,6 +235,10 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         //mRollViewPager.setHintView(new TextHintView(this));
         //mRollViewPager.setHintView(null);
     }
+
+
+
+
 
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -257,13 +289,13 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case id.btn_xiala:
                 SharedPreferences na = getSharedPreferences("usernames", Context.MODE_PRIVATE);
-                String namer =na.getString("name", "");
+                String namer = na.getString("name", "");
                 TextView username = navigationView.getHeaderView(0).findViewById(id.username);
                 username.setText(namer);
-                baoyangxiangmu.setText("上次保养项目："+texts);
+                baoyangxiangmu.setText("上次保养项目：" + texts);
                 SharedPreferences time = getSharedPreferences("shijian", Context.MODE_PRIVATE);
-                String t = time.getString("sj","");
-                baoyangtime.setText("上次保养日期："+t);
+                String t = time.getString("sj", "");
+                baoyangtime.setText("上次保养日期：" + t);
 
                 Log.i("msg", "---------->");
                 if (drawerLayout.isDrawerOpen(navigationView)) {
@@ -272,31 +304,22 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
                     drawerLayout.openDrawer(navigationView);
                 }
                 break;
-            case id.btn_user:
-                Intent intent2 = new Intent(this, myinfo.class);
-                startActivity(intent2);
-                baoyangxiangmu.setText("上次保养项目："+texts);
-                SharedPreferences time2 = getSharedPreferences("shijian", Context.MODE_PRIVATE);
-                String ti = time2.getString("sj","");
-                baoyangtime.setText("上次保养日期："+ti);
-                finish();
-                break;
+
             case id.baoyng:
                 Intent intent3 = new Intent(this, BaoyangList.class);
                 startActivity(intent3);
                 finish();
-                baoyangxiangmu.setText("上次保养项目："+texts);
                 break;
             case id.weixiu:
                 Intent intent4 = new Intent(this, repier.class);
                 startActivity(intent4);
-                baoyangxiangmu.setText("上次保养项目："+texts);
                 break;
             case id.jiyou:
                 Toast.makeText(getApplicationContext(), "该功能尚未开放，尽请期待", Toast.LENGTH_LONG).show();
                 break;
             case id.lingjian:
-                Toast.makeText(getApplicationContext(), "该功能尚未开放，尽请期待", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(this,baoyang.class);
+                startActivity(intent);
                 break;
             case id.wheel:
                 Toast.makeText(getApplicationContext(), "该功能尚未开放，尽请期待", Toast.LENGTH_LONG).show();

@@ -182,7 +182,14 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
                             public void onClick(DialogInterface dialog, int which) {
                                 //确定后要执行的语句
                                 //结束这个Activity
+                                SharedPreferences clean = getSharedPreferences("login",Context.MODE_PRIVATE);
+                                SharedPreferences.Editor haha = clean.edit();
+                                haha.putString("co","no");
+                                haha.commit();
+                                Intent intent = new Intent(UserActivity.this,MainActivity.class);
+                                startActivity(intent);
                                 UserActivity.this.finish();
+
                             }
                         }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
 

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -16,12 +17,13 @@ import java.util.List;
 
 public class BaoyangReport extends AppCompatActivity implements View.OnClickListener {
     private TextView back6, t1, t2, t3, t4, t5, t6, t7, t8, t9, t11, t12, t13, t14, t15, t16, t17, t18,t19;
-
+private LinearLayout Useract6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_baoyang_report);
+        Useract6 = findViewById(R.id.Useract6);
         back6 = findViewById(R.id.back6);
         back6.setOnClickListener(this);
         t1 = findViewById(R.id.t1);
@@ -83,7 +85,7 @@ public class BaoyangReport extends AppCompatActivity implements View.OnClickList
 
 //        texts = a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p;
         if (a != "" | b != "" | c != "" | d != "" | e != "" | f != "" | g != "" | h != "" | i != "" | j != "" | k != "" | l != "" | m != "" | n != "" | o != "" | p != ""|q != "") {
-            t1.setText("上次的保养时间为"+t+"\n"+"                  保养项目：");
+            t1.setText("上次的保养时间为"+t+"\n"+"                       保养项目：");
         } else {
             t1.setText("暂无保养记录");
         }
@@ -172,6 +174,33 @@ public class BaoyangReport extends AppCompatActivity implements View.OnClickList
         }else{
             t19.setVisibility(View.GONE);
         }
+    }
+
+//设置导航栏隐藏和滑动呼出
+
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            hideSystemUI();
+        }
+    }
+
+    private void showSystemUI() {
+        Useract6.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+    }
+
+    private void hideSystemUI() {
+        Useract6.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//                        | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
     }
 
 

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#303030">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="油液"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textColor="#ffffff"
+                    android:layout_margin="10dp" />
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text=" 机油 "
+                android:background="#ffffff"/>
+
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text=" 变速箱油 "
+                android:background="#ffffff"
+                android:layout_marginTop="1dp"/>
+
+            <CheckBox
+                android:id="@+id/checkBox3"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text=" 转向助力油 "
+                android:background="#ffffff"
+                android:layout_marginTop="1dp"/>
+
+            <CheckBox
+                android:id="@+id/checkBox4"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text=" 刹车油 "
+                android:background="#ffffff"
+                android:layout_marginTop="1dp"/>
+
+            <CheckBox
+                android:id="@+id/checkBox5"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text=" 防冻液 "
+                android:background="#ffffff"
+                android:layout_marginTop="1dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#303030">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="滤芯"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textColor="#ffffff"
+                    android:layout_margin="10dp" />
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/checkBox6"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text=" 机油滤芯 "
+                android:background="#ffffff"/>
+
+            <CheckBox
+                android:id="@+id/checkBox7"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text=" 汽油滤芯 "
+                android:background="#ffffff"
+                android:layout_marginTop="1dp"/>
+
+            <CheckBox
+                android:id="@+id/checkBox8"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text=" 空气滤芯 "
+                android:background="#ffffff"
+                android:layout_marginTop="1dp"/>
+
+            <CheckBox
+                android:id="@+id/checkBox9"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text=" 空调滤芯 "
+                android:background="#ffffff"
+                android:layout_marginTop="1dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#303030">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="其他"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textColor="#ffffff"
+                    android:layout_margin="10dp" />
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/checkBox11"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text=" 火花塞 "
+                android:background="#ffffff"/>
+
+            <CheckBox
+                android:id="@+id/checkBox12"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text=" 轮胎 "
+                android:background="#ffffff"
+                android:layout_marginTop="1dp"/>
+
+            <CheckBox
+                android:id="@+id/checkBox13"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text=" 玻璃水 "
+                android:background="#ffffff"
+                android:layout_marginTop="1dp"/>
+
+
+
+            <CheckBox
+                android:id="@+id/checkBox14"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text=" 雨刮条 "
+                android:background="#ffffff"
+                android:layout_marginTop="1dp"/>
+
+            <CheckBox
+                android:id="@+id/checkBox15"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text=" 电瓶 "
+                android:background="#ffffff"
+                android:layout_marginTop="1dp"/>
+            <CheckBox
+                android:id="@+id/checkBox16"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text=" 正时皮带 "
+                android:background="#ffffff"
+                android:layout_marginTop="1dp"/>
+            <CheckBox
+                android:id="@+id/checkBox17"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text=" 辅助皮带 "
+                android:background="#ffffff"
+                android:layout_marginTop="1dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#303030">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="备注"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textColor="#ffffff"
+                    android:layout_margin="10dp" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/beizhu"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:ems="10"
+                android:textSize="12dp"
+                android:hint="如果有其他保养项目，请在此处注释"
+                android:layout_marginTop="1dp"
+                android:background="#ffffff"
+                />
+            <Button
+                android:id="@+id/tijiao"
+                android:layout_margin="20dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#d30111"
+                android:textColor="#ffffff"
+                android:text="提交保养项目"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

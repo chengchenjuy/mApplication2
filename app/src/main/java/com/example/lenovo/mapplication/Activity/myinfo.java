@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,8 +20,13 @@ import com.example.lenovo.mapplication.R;
 
 import java.text.SimpleDateFormat;
 
+
+
 public class myinfo extends AppCompatActivity implements View.OnClickListener {
     private TextView back2, changename, myname;
+    private LinearLayout Useract2;
+private Button bangding;
+
 
 
 
@@ -31,15 +38,50 @@ public class myinfo extends AppCompatActivity implements View.OnClickListener {
         back2.setOnClickListener(this);
         changename = findViewById(R.id.changename);
         changename.setOnClickListener(this);
+        bangding = findViewById(R.id.bangding);
+        bangding.setOnClickListener(this);
+        Useract2 = findViewById(R.id.Useract2);
         SharedPreferences na = getSharedPreferences("usernames", Context.MODE_PRIVATE);
-        String namer = (String)na.getString("name", "");
+        String namer = (String)na.getString("name", "游客");
         myname = findViewById(R.id.myname);
-        myname.setText(namer);
+        if(!namer.equals("")) {
+            myname.setText(namer);
+        }else {
+            myname.setText("游客");
+        }
+
 
 
 
     }
 
+
+    //设置导航栏隐藏和滑动呼出
+
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            hideSystemUI();
+        }
+    }
+
+    private void showSystemUI() {
+        Useract2.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+    }
+
+    private void hideSystemUI() {
+        Useract2.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//                        | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+    }
 
     @Override
     public void onClick(View view) {
@@ -61,14 +103,21 @@ public class myinfo extends AppCompatActivity implements View.OnClickListener {
                                 SharedPreferences.Editor editor = na.edit();
                                 editor.putString("name", editText.getText().toString());
                                 editor.commit();
-                                String namer = na.getString("name", "");
-                                myname.setText(""+ namer);
+                                String namer = na.getString("name", "游客");
+                                if(!namer.equals("")) {
+                                    myname.setText(namer);
+                                }else {
+                                    myname.setText("游客");
+                                }
 
                             }
                         }).show();
 
 
                 break;
+            case R.id.bangding:
+                Intent intent3 = new Intent(this,CarReg.class);
+                startActivity(intent3);
 
         }
     }

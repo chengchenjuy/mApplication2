@@ -8,6 +8,7 @@
     android:gravity="center"
     android:background="@mipmap/backg"
     tools:context="com.example.lenovo.mapplication.Activity.head">
+
     <ImageView
         android:id="@+id/myface"
         android:layout_width="90dp"
@@ -21,9 +22,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="25sp"
+        android:text="游客"
         android:layout_marginTop="24dp"
         android:textColor="#ffffff" />
     <TextView
+        android:id="@+id/huiyuan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="13sp"

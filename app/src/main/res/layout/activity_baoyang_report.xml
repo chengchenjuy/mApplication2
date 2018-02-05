@@ -6,13 +6,16 @@
     android:layout_height="match_parent"
     android:background="#ececec"
     android:orientation="vertical"
+    android:fitsSystemWindows="false"
     tools:context="com.example.lenovo.mapplication.Activity.BaoyangReport">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-    <FrameLayout
+        android:orientation="vertical"
+        android:id="@+id/Useract6">
+
+        <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -23,7 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_margin="15dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginLeft="15dp"
             android:text="返回"
             android:textColor="#ffffff" />
     </FrameLayout>

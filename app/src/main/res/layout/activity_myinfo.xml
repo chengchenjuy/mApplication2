@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
     tools:context="com.example.lenovo.mapplication.Activity.myinfo">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/Useract2">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -80,58 +82,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#ececec"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/touxiang"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="1px"
-                    android:layout_weight="1"
-                    android:background="#ffffff"
-                    android:text="更换头像" />
-
-                <Button
-                    android:id="@+id/bangding"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="1px"
-                    android:layout_weight="1"
-                    android:background="#ffffff"
-                    android:text="绑定车辆" />
-
-                <Button
-                    android:id="@+id/xinxi"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="1px"
-                    android:layout_weight="1"
-                    android:background="#ffffff"
-                    android:text="详细信息" />
-
-                <Button
-                    android:id="@+id/tousu"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="1px"
-                    android:layout_weight="1"
-                    android:background="#ffffff"
-                    android:text="投诉建议" />
-
-
-                <Button
-                    android:id="@+id/banben"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="1px"
-                    android:layout_weight="1"
-                    android:background="#ffffff"
-                    android:text="版本详情" />
-            </LinearLayout>
+           <include layout="@layout/myinfview"/>
 
 
         </LinearLayout>

@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.lenovo.mapplication.Activity.WelcomeActivity">
+    android:fitsSystemWindows="false"
+    tools:context="com.example.lenovo.mapplication.Activity.WelcomeActivity"
+    android:id="@+id/welcom">
+
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"

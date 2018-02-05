@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ececec">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ececec"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/touxiang"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="1px"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:text="更换头像" />
+
+        <Button
+            android:id="@+id/bangding"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="1px"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:text="绑定车辆" />
+
+        <Button
+            android:id="@+id/xinxi"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="1px"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:text="详细信息" />
+
+        <Button
+            android:id="@+id/tousu"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="1px"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:text="投诉建议" />
+
+
+        <Button
+            android:id="@+id/banben"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="1px"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:text="版本详情" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="1dp"
+            android:layout_weight="1"
+            android:background="#ffffff">
+        </View>
+    </LinearLayout>
+
+
+</LinearLayout>

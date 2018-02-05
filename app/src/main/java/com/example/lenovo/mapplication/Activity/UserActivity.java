@@ -40,19 +40,48 @@ import static com.example.lenovo.mapplication.R.mipmap;
 
 public class UserActivity extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
     private ImageView btn_xiala, menu, baoyang;
-    private LinearLayout xiala2, baoyng, weixiu, jiyou, lingjian, wheel, bbs, fenxiang, jianding;
+    private LinearLayout xiala2, baoyng, weixiu, jiyou, lingjian, wheel, bbs, fenxiang, jianding, Useract;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private RollPagerView mRollViewPager;
-    private TextView username, baoyangtime, baoyangxiangmu, baoyangcishu, shanglu,driverkm;
+    private TextView username, baoyangtime, baoyangxiangmu, baoyangcishu, shanglu, driverkm,bxtime,njtime;
     private CheckBox cbJantou;
     private String texts;
 
+//设置导航栏隐藏和滑动呼出
+
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            hideSystemUI();
+        }
+    }
+
+    private void showSystemUI() {
+        Useract.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+    }
+
+    private void hideSystemUI() {
+        Useract.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//                        | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(layout.activity_user);
+
+
 //        initWindow();
 
         shanglu = findViewById(id.shanglu);
@@ -85,13 +114,57 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         baoyangxiangmu = findViewById(id.baoyangxiangmu);
         baoyangcishu = findViewById(id.baoyangcishu);
         driverkm = findViewById(id.driverkm);
+        Useract = findViewById(id.Useract);
+        username = navigationView.getHeaderView(0).findViewById(id.username);
+        bxtime = findViewById(id.bxtime);
+        njtime = findViewById(id.njtime);
+
+        //判定信息是否完整
+        SharedPreferences bidui = getSharedPreferences("firsttime",Context.MODE_PRIVATE);
+        String bidui1 = bidui.getString("b","未设置");
+        String bidui2 = bidui.getString("v","未设置");
+
+        if(bidui1.equals("未设置")|bidui2.equals("未设置")){
+
+            AlertDialog.Builder alertbBuilder = new AlertDialog.Builder(UserActivity.this);
+            alertbBuilder.setTitle("提示").setMessage("您当前信息不完整，要现在补完信息吗？").setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+
+                public void onClick(DialogInterface dialog, int which) {
+                    //确定后要执行的语句
+                    //结束这个Activity
+
+                    Intent intentt = new Intent(UserActivity.this, myinfo.class);
+                    startActivity(intentt);
+                    Intent intenttt = new Intent(UserActivity.this,CarReg.class);
+                    startActivity(intenttt);
+                    finish();
+
+                }
+            }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+
+
+                public void onClick(DialogInterface dialog, int which) {
+//取消后要执行的语句
+//取消
+                    dialog.cancel();
+
+                }
+            }).create();
+            alertbBuilder.show();
+
+        }
+
         SharedPreferences na = getSharedPreferences("usernames", Context.MODE_PRIVATE);
-        String namer = na.getString("name", "");
+        String namer = na.getString("name", "游客");
         Log.i("msg", "-=-=-=-=-=->" + namer);
-        TextView username = navigationView.getHeaderView(0).findViewById(id.username);
-        username.setText(namer);
+        if(!namer.equals("")) {
+            username.setText(namer);
+        }else {
+            username.setText("游客");
+        }
         SharedPreferences time = getSharedPreferences("shijian", Context.MODE_PRIVATE);
-        String t = time.getString("sj", "");
+        String t = time.getString("sj", "无记录");
         baoyangtime.setText("上次保养日期：" + t);
         //获取保养日期
         SharedPreferences cs = getSharedPreferences("c19", Context.MODE_PRIVATE);
@@ -130,25 +203,53 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         SharedPreferences a17 = getSharedPreferences("c17", Context.MODE_PRIVATE);
         String p = a17.getString("d17", "");
         SharedPreferences a18 = getSharedPreferences("c18", Context.MODE_PRIVATE);
-        String q = a18.getString("d18","");
+        String q = a18.getString("d18", "");
+//        SimpleDateFormat nian = new SimpleDateFormat("yyyy");
+//        String datenian = nian.format(new java.util.Date());
+//        int dn = Integer.parseInt(datenian);
+//        SimpleDateFormat yue = new SimpleDateFormat("MM");
+//        String dateyue = yue.format(new java.util.Date());
+//        int dy = Integer.parseInt(dateyue);
+//        SimpleDateFormat ri = new SimpleDateFormat("dd");
+//        String dateri = ri.format(new java.util.Date());
+//        int dr = Integer.parseInt(dateri);
 
-        texts = a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p +q;
-        baoyangxiangmu.setText("上次保养项目：" + texts);
+
+        SharedPreferences ft = getSharedPreferences("firsttime",Context.MODE_PRIVATE);
+       String niann = ft.getString("n","0");
+       String nianjian = ft.getString("v","未设置");
+       String baoxian = ft.getString("b","未设置");
+       njtime.setText("上次年检时间："+nianjian);
+       bxtime.setText("上次投保时间："+baoxian);
+
+if(!a.equals("")|!b.equals("")|!c.equals("")|!d.equals("")|!e.equals("")|!f.equals("")|!g.equals("")|!h.equals("")|!i.equals("")|!j.equals("")|!k.equals("")|!l.equals("")|!m.equals("")|!n.equals("")|!o.equals("")|!p.equals("")|!q.equals("")){
+        texts = a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q;
+        baoyangxiangmu.setText("上次保养项目：" + texts);}
+        else {
+    baoyangxiangmu.setText("上次保养项目：无记录");
+
+
+}
 
 
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date d1 = df.parse(df.format(new java.util.Date()));
-            Date d2 = df.parse("2015-10-24");
+            Date d2 = df.parse(niann);
+            long d3 = d1.getTime() - d2.getTime();
+            if(d3>0){
             long diff = d1.getTime() - d2.getTime();//这样得到的差值是微秒级别
             long days = diff / (1000 * 60 * 60 * 24);
             shanglu.setText("" + days);
-            long km = days*70;
-            driverkm.setText("预估行驶里程："+km+"公里(km)");
+            long km = days * 40;
+            driverkm.setText("预估行驶里程：" + km + "公里(km)");}
+            else{
+                shanglu.setText("0");
+                driverkm.setText("未设置上路时间，无法预估行驶里程");
+            }
 
         } catch (Exception ee) {
         }//获取时间差
-
 
 
 //        int year = 2014;
@@ -172,6 +273,7 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case id.tuichu:
+
 //                        System.exit(0);
 //                        Intent intent = new Intent(UserActivity.this, MainActivity.class);
 //                        startActivity(intent);
@@ -182,11 +284,11 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
                             public void onClick(DialogInterface dialog, int which) {
                                 //确定后要执行的语句
                                 //结束这个Activity
-                                SharedPreferences clean = getSharedPreferences("login",Context.MODE_PRIVATE);
+                                SharedPreferences clean = getSharedPreferences("login", Context.MODE_PRIVATE);
                                 SharedPreferences.Editor haha = clean.edit();
-                                haha.putString("co","no");
+                                haha.putString("co", "no");
                                 haha.commit();
-                                Intent intent = new Intent(UserActivity.this,MainActivity.class);
+                                Intent intent = new Intent(UserActivity.this, MainActivity.class);
                                 startActivity(intent);
                                 UserActivity.this.finish();
 
@@ -211,10 +313,9 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
                     case id.report:
                         Intent intent2 = new Intent(UserActivity.this, BaoyangReport.class);
                         startActivity(intent2);
+                        break;
 
                 }
-                item.setChecked(true);
-                Toast.makeText(UserActivity.this, item.getTitle().toString(), Toast.LENGTH_SHORT).show();
                 drawerLayout.closeDrawer(navigationView);
                 return true;
             }
@@ -242,9 +343,6 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         //mRollViewPager.setHintView(new TextHintView(this));
         //mRollViewPager.setHintView(null);
     }
-
-
-
 
 
     @Override
@@ -296,14 +394,13 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case id.btn_xiala:
                 SharedPreferences na = getSharedPreferences("usernames", Context.MODE_PRIVATE);
-                String namer = na.getString("name", "");
+                String namer = na.getString("name", "游客");
                 TextView username = navigationView.getHeaderView(0).findViewById(id.username);
-                username.setText(namer);
-                baoyangxiangmu.setText("上次保养项目：" + texts);
-                SharedPreferences time = getSharedPreferences("shijian", Context.MODE_PRIVATE);
-                String t = time.getString("sj", "");
-                baoyangtime.setText("上次保养日期：" + t);
-
+                if(!namer.equals("")) {
+                    username.setText(namer);
+                }else {
+                    username.setText("游客");
+                }
                 Log.i("msg", "---------->");
                 if (drawerLayout.isDrawerOpen(navigationView)) {
                     drawerLayout.closeDrawer(navigationView);
@@ -325,7 +422,7 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(getApplicationContext(), "该功能尚未开放，尽请期待", Toast.LENGTH_LONG).show();
                 break;
             case id.lingjian:
-                Intent intent = new Intent(this,baoyang.class);
+                Intent intent = new Intent(this, baoyang.class);
                 startActivity(intent);
                 break;
             case id.wheel:

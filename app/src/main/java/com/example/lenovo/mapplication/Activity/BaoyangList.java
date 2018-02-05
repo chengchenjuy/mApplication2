@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,12 +27,14 @@ public class BaoyangList extends AppCompatActivity implements View.OnClickListen
     private CheckBox checkBox11, checkBox12, checkBox13, checkBox14, checkBox15, checkBox16, checkBox17;
     private EditText beizhu;
     private int BaoYangTime;
+    private LinearLayout Useract7;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_baoyang_list);
+        Useract7 = findViewById(R.id.Useract7);
         tijiao = findViewById(R.id.tijiao);
         tijiao.setOnClickListener(this);
         beizhu = findViewById(R.id.beizhu);
@@ -55,7 +58,38 @@ public class BaoyangList extends AppCompatActivity implements View.OnClickListen
         checkBox17 = findViewById(R.id.checkBox17);
 
 
+
+
+
     }
+
+//设置导航栏隐藏和滑动呼出
+
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            hideSystemUI();
+        }
+    }
+
+    private void showSystemUI() {
+        Useract7.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+    }
+
+    private void hideSystemUI() {
+        Useract7.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//                        | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+    }
+
 
 
     @Override
@@ -69,6 +103,7 @@ public class BaoyangList extends AppCompatActivity implements View.OnClickListen
             case R.id.tijiao:
 
 
+
                 if (checkBox.isChecked() | checkBox2.isChecked() | checkBox3.isChecked() | checkBox4.isChecked() | checkBox5.isChecked() | checkBox6.isChecked() | checkBox7.isChecked() | checkBox8.isChecked() | checkBox9.isChecked() | checkBox11.isChecked() | checkBox12.isChecked() | checkBox13.isChecked() | checkBox14.isChecked() | checkBox15.isChecked() | checkBox16.isChecked() | checkBox17.isChecked() | !beizhu.getText().toString().equals("")) {
 
 
@@ -79,218 +114,230 @@ public class BaoyangList extends AppCompatActivity implements View.OnClickListen
                         public void onClick(DialogInterface dialog, int which) {
                             //确定后要执行的语句
                             //结束这个Activity
+                            //判定信息是否完整
 
+                            SharedPreferences bidui = getSharedPreferences("firsttime",Context.MODE_PRIVATE);
+                            String bidui1 = bidui.getString("b","未设置");
+                            String bidui2 = bidui.getString("v","未设置");
+                            String bidui3 = bidui.getString("n","未设置");
+                            if(bidui1.equals("未设置")|bidui2.equals("未设置")|bidui3.equals("未设置")){
+                                Toast.makeText(getApplicationContext(), "信息不完整，无法提交保养数据！", Toast.LENGTH_LONG).show();
+                                Intent intentfk = new Intent(BaoyangList.this, UserActivity.class);
+                                startActivity(intentfk);
+                                finish();
 
-                            if (checkBox.isChecked()) {
+                            }else {
 
-                                SharedPreferences a1 = getSharedPreferences("c1", Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = a1.edit();
-                                editor.putString("d1", checkBox.getText().toString());
-                                editor.commit();
+                                if (checkBox.isChecked()) {
+
+                                    SharedPreferences a1 = getSharedPreferences("c1", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = a1.edit();
+                                    editor.putString("d1", checkBox.getText().toString());
+                                    editor.commit();
 //                    String a = a1.getString("d1", "");
-                                Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
 //                    Log.i("mmg", "..........." + a);
 
 
-                            } else {
-                                SharedPreferences a1 = getSharedPreferences("c1", Context.MODE_PRIVATE);
-                                a1.edit().clear().commit();
+                                } else {
+                                    SharedPreferences a1 = getSharedPreferences("c1", Context.MODE_PRIVATE);
+                                    a1.edit().clear().commit();
 //                    String a = a1.getString("d1", "");
 //                    Log.i("mmg", "..........." + a);
-                            }
-                            if (checkBox2.isChecked()) {
-                                SharedPreferences a2 = getSharedPreferences("c2", Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = a2.edit();
-                                editor.putString("d2", checkBox2.getText().toString());
-                                editor.commit();
-                                Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
+                                }
+                                if (checkBox2.isChecked()) {
+                                    SharedPreferences a2 = getSharedPreferences("c2", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = a2.edit();
+                                    editor.putString("d2", checkBox2.getText().toString());
+                                    editor.commit();
+                                    Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
 //                    String a = a2.getString("d2", "");
 //                    Log.i("mmg", "..........." + a);
-                            } else {
-                                SharedPreferences a2 = getSharedPreferences("c2", Context.MODE_PRIVATE);
-                                a2.edit().clear().commit();
+                                } else {
+                                    SharedPreferences a2 = getSharedPreferences("c2", Context.MODE_PRIVATE);
+                                    a2.edit().clear().commit();
 //                    String a = a2.getString("d2", "");
 //                    Log.i("mmg", "..........." + a);
-                            }
-                            if (checkBox3.isChecked()) {
-                                SharedPreferences a3 = getSharedPreferences("c3", Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = a3.edit();
-                                editor.putString("d3", checkBox3.getText().toString());
+                                }
+                                if (checkBox3.isChecked()) {
+                                    SharedPreferences a3 = getSharedPreferences("c3", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = a3.edit();
+                                    editor.putString("d3", checkBox3.getText().toString());
+                                    editor.commit();
+                                    Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
+
+                                } else {
+                                    SharedPreferences a3 = getSharedPreferences("c3", Context.MODE_PRIVATE);
+                                    a3.edit().clear().commit();
+                                }
+                                if (checkBox4.isChecked()) {
+                                    SharedPreferences a4 = getSharedPreferences("c4", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = a4.edit();
+                                    editor.putString("d4", checkBox4.getText().toString());
+                                    editor.commit();
+                                    Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
+
+                                } else {
+                                    SharedPreferences a4 = getSharedPreferences("c4", Context.MODE_PRIVATE);
+                                    a4.edit().clear().commit();
+                                }
+                                if (checkBox5.isChecked()) {
+                                    SharedPreferences a5 = getSharedPreferences("c5", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = a5.edit();
+                                    editor.putString("d5", checkBox5.getText().toString());
+                                    editor.commit();
+                                    Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
+
+                                } else {
+                                    SharedPreferences a5 = getSharedPreferences("c5", Context.MODE_PRIVATE);
+                                    a5.edit().clear().commit();
+                                }
+                                if (checkBox6.isChecked()) {
+                                    SharedPreferences a6 = getSharedPreferences("c6", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = a6.edit();
+                                    editor.putString("d6", checkBox6.getText().toString());
+                                    editor.commit();
+                                    Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
+
+                                } else {
+                                    SharedPreferences a6 = getSharedPreferences("c6", Context.MODE_PRIVATE);
+                                    a6.edit().clear().commit();
+                                }
+                                if (checkBox7.isChecked()) {
+                                    SharedPreferences a7 = getSharedPreferences("c7", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = a7.edit();
+                                    editor.putString("d7", checkBox7.getText().toString());
+                                    editor.commit();
+                                    Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
+
+                                } else {
+                                    SharedPreferences a7 = getSharedPreferences("c7", Context.MODE_PRIVATE);
+                                    a7.edit().clear().commit();
+                                }
+                                if (checkBox8.isChecked()) {
+                                    SharedPreferences a8 = getSharedPreferences("c8", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = a8.edit();
+                                    editor.putString("d8", checkBox8.getText().toString());
+                                    editor.commit();
+                                    Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
+
+                                } else {
+                                    SharedPreferences a8 = getSharedPreferences("c8", Context.MODE_PRIVATE);
+                                    a8.edit().clear().commit();
+                                }
+                                if (checkBox9.isChecked()) {
+                                    SharedPreferences a9 = getSharedPreferences("c9", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = a9.edit();
+                                    editor.putString("d9", checkBox9.getText().toString());
+                                    editor.commit();
+                                    Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
+
+                                } else {
+                                    SharedPreferences a9 = getSharedPreferences("c9", Context.MODE_PRIVATE);
+                                    a9.edit().clear().commit();
+                                }
+                                if (checkBox11.isChecked()) {
+                                    SharedPreferences a11 = getSharedPreferences("c11", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = a11.edit();
+                                    editor.putString("d11", checkBox11.getText().toString());
+                                    editor.commit();
+                                    Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
+
+                                } else {
+                                    SharedPreferences a11 = getSharedPreferences("c11", Context.MODE_PRIVATE);
+                                    a11.edit().clear().commit();
+                                }
+                                if (checkBox12.isChecked()) {
+                                    SharedPreferences a12 = getSharedPreferences("c12", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = a12.edit();
+                                    editor.putString("d12", checkBox12.getText().toString());
+                                    editor.commit();
+                                    Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
+
+                                } else {
+                                    SharedPreferences a12 = getSharedPreferences("c12", Context.MODE_PRIVATE);
+                                    a12.edit().clear().commit();
+                                }
+                                if (checkBox13.isChecked()) {
+                                    SharedPreferences a13 = getSharedPreferences("c13", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = a13.edit();
+                                    editor.putString("d13", checkBox13.getText().toString());
+                                    editor.commit();
+                                    Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
+
+                                } else {
+                                    SharedPreferences a13 = getSharedPreferences("c13", Context.MODE_PRIVATE);
+                                    a13.edit().clear().commit();
+                                }
+                                if (checkBox14.isChecked()) {
+                                    SharedPreferences a14 = getSharedPreferences("c14", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = a14.edit();
+                                    editor.putString("d14", checkBox14.getText().toString());
+                                    editor.commit();
+                                    Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
+
+                                } else {
+                                    SharedPreferences a14 = getSharedPreferences("c14", Context.MODE_PRIVATE);
+                                    a14.edit().clear().commit();
+                                }
+                                if (checkBox15.isChecked()) {
+                                    SharedPreferences a15 = getSharedPreferences("c15", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = a15.edit();
+                                    editor.putString("d15", checkBox15.getText().toString());
+                                    editor.commit();
+                                    Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
+
+                                } else {
+                                    SharedPreferences a15 = getSharedPreferences("c15", Context.MODE_PRIVATE);
+                                    a15.edit().clear().commit();
+                                }
+                                if (checkBox16.isChecked()) {
+                                    SharedPreferences a16 = getSharedPreferences("c16", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = a16.edit();
+                                    editor.putString("d16", checkBox16.getText().toString());
+                                    editor.commit();
+                                    Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
+
+                                } else {
+                                    SharedPreferences a16 = getSharedPreferences("c16", Context.MODE_PRIVATE);
+                                    a16.edit().clear().commit();
+                                }
+                                if (checkBox17.isChecked()) {
+                                    SharedPreferences a17 = getSharedPreferences("c17", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = a17.edit();
+                                    editor.putString("d17", checkBox17.getText().toString());
+                                    editor.commit();
+                                    Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
+
+                                } else {
+                                    SharedPreferences a17 = getSharedPreferences("c17", Context.MODE_PRIVATE);
+                                    a17.edit().clear().commit();
+                                }
+                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+                                String date = sdf.format(new java.util.Date());
+                                SharedPreferences time = getSharedPreferences("shijian", Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = time.edit();
+                                editor.putString("sj", date);
                                 editor.commit();
-                                Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
+                                SharedPreferences a18 = getSharedPreferences("c18", Context.MODE_PRIVATE);
+                                SharedPreferences.Editor jilu = a18.edit();
+                                jilu.putString("d18", beizhu.getText().toString());
+                                jilu.commit();
 
-                            } else {
-                                SharedPreferences a3 = getSharedPreferences("c3", Context.MODE_PRIVATE);
-                                a3.edit().clear().commit();
-                            }
-                            if (checkBox4.isChecked()) {
-                                SharedPreferences a4 = getSharedPreferences("c4", Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = a4.edit();
-                                editor.putString("d4", checkBox4.getText().toString());
-                                editor.commit();
-                                Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
-
-                            } else {
-                                SharedPreferences a4 = getSharedPreferences("c4", Context.MODE_PRIVATE);
-                                a4.edit().clear().commit();
-                            }
-                            if (checkBox5.isChecked()) {
-                                SharedPreferences a5 = getSharedPreferences("c5", Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = a5.edit();
-                                editor.putString("d5", checkBox5.getText().toString());
-                                editor.commit();
-                                Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
-
-                            } else {
-                                SharedPreferences a5 = getSharedPreferences("c5", Context.MODE_PRIVATE);
-                                a5.edit().clear().commit();
-                            }
-                            if (checkBox6.isChecked()) {
-                                SharedPreferences a6 = getSharedPreferences("c6", Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = a6.edit();
-                                editor.putString("d6", checkBox6.getText().toString());
-                                editor.commit();
-                                Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
-
-                            } else {
-                                SharedPreferences a6 = getSharedPreferences("c6", Context.MODE_PRIVATE);
-                                a6.edit().clear().commit();
-                            }
-                            if (checkBox7.isChecked()) {
-                                SharedPreferences a7 = getSharedPreferences("c7", Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = a7.edit();
-                                editor.putString("d7", checkBox7.getText().toString());
-                                editor.commit();
-                                Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
-
-                            } else {
-                                SharedPreferences a7 = getSharedPreferences("c7", Context.MODE_PRIVATE);
-                                a7.edit().clear().commit();
-                            }
-                            if (checkBox8.isChecked()) {
-                                SharedPreferences a8 = getSharedPreferences("c8", Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = a8.edit();
-                                editor.putString("d8", checkBox8.getText().toString());
-                                editor.commit();
-                                Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
-
-                            } else {
-                                SharedPreferences a8 = getSharedPreferences("c8", Context.MODE_PRIVATE);
-                                a8.edit().clear().commit();
-                            }
-                            if (checkBox9.isChecked()) {
-                                SharedPreferences a9 = getSharedPreferences("c9", Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = a9.edit();
-                                editor.putString("d9", checkBox9.getText().toString());
-                                editor.commit();
-                                Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
-
-                            } else {
-                                SharedPreferences a9 = getSharedPreferences("c9", Context.MODE_PRIVATE);
-                                a9.edit().clear().commit();
-                            }
-                            if (checkBox11.isChecked()) {
-                                SharedPreferences a11 = getSharedPreferences("c11", Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = a11.edit();
-                                editor.putString("d11", checkBox11.getText().toString());
-                                editor.commit();
-                                Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
-
-                            } else {
-                                SharedPreferences a11 = getSharedPreferences("c11", Context.MODE_PRIVATE);
-                                a11.edit().clear().commit();
-                            }
-                            if (checkBox12.isChecked()) {
-                                SharedPreferences a12 = getSharedPreferences("c12", Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = a12.edit();
-                                editor.putString("d12", checkBox12.getText().toString());
-                                editor.commit();
-                                Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
-
-                            } else {
-                                SharedPreferences a12 = getSharedPreferences("c12", Context.MODE_PRIVATE);
-                                a12.edit().clear().commit();
-                            }
-                            if (checkBox13.isChecked()) {
-                                SharedPreferences a13 = getSharedPreferences("c13", Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = a13.edit();
-                                editor.putString("d13", checkBox13.getText().toString());
-                                editor.commit();
-                                Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
-
-                            } else {
-                                SharedPreferences a13 = getSharedPreferences("c13", Context.MODE_PRIVATE);
-                                a13.edit().clear().commit();
-                            }
-                            if (checkBox14.isChecked()) {
-                                SharedPreferences a14 = getSharedPreferences("c14", Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = a14.edit();
-                                editor.putString("d14", checkBox14.getText().toString());
-                                editor.commit();
-                                Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
-
-                            } else {
-                                SharedPreferences a14 = getSharedPreferences("c14", Context.MODE_PRIVATE);
-                                a14.edit().clear().commit();
-                            }
-                            if (checkBox15.isChecked()) {
-                                SharedPreferences a15 = getSharedPreferences("c15", Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = a15.edit();
-                                editor.putString("d15", checkBox15.getText().toString());
-                                editor.commit();
-                                Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
-
-                            } else {
-                                SharedPreferences a15 = getSharedPreferences("c15", Context.MODE_PRIVATE);
-                                a15.edit().clear().commit();
-                            }
-                            if (checkBox16.isChecked()) {
-                                SharedPreferences a16 = getSharedPreferences("c16", Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = a16.edit();
-                                editor.putString("d16", checkBox16.getText().toString());
-                                editor.commit();
-                                Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
-
-                            } else {
-                                SharedPreferences a16 = getSharedPreferences("c16", Context.MODE_PRIVATE);
-                                a16.edit().clear().commit();
-                            }
-                            if (checkBox17.isChecked()) {
-                                SharedPreferences a17 = getSharedPreferences("c17", Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = a17.edit();
-                                editor.putString("d17", checkBox17.getText().toString());
-                                editor.commit();
-                                Toast.makeText(getApplicationContext(), "提交成功", Toast.LENGTH_LONG).show();
-
-                            } else {
-                                SharedPreferences a17 = getSharedPreferences("c17", Context.MODE_PRIVATE);
-                                a17.edit().clear().commit();
-                            }
-                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
-                            String date = sdf.format(new java.util.Date());
-                            SharedPreferences time = getSharedPreferences("shijian", Context.MODE_PRIVATE);
-                            SharedPreferences.Editor editor = time.edit();
-                            editor.putString("sj", date);
-                            editor.commit();
-                            SharedPreferences a18 = getSharedPreferences("c18", Context.MODE_PRIVATE);
-                            SharedPreferences.Editor jilu = a18.edit();
-                            jilu.putString("d18", beizhu.getText().toString());
-                            jilu.commit();
-
-                            SharedPreferences byTimes = getSharedPreferences("c19", Context.MODE_PRIVATE);
-                            int times = byTimes.getInt("d19", 0);
-                            if (times == 0) {
-                                times = 1;
-                                byTimes.edit().putInt("d19", times).commit();
-                            } else {
-                                byTimes.edit().putInt("d19", times + 1).commit();
-                            }
+                                SharedPreferences byTimes = getSharedPreferences("c19", Context.MODE_PRIVATE);
+                                int times = byTimes.getInt("d19", 0);
+                                if (times == 0) {
+                                    times = 1;
+                                    byTimes.edit().putInt("d19", times).commit();
+                                } else {
+                                    byTimes.edit().putInt("d19", times + 1).commit();
+                                }
                     /*SharedPreferences a19 = getSharedPreferences("c19", Context.MODE_PRIVATE);
                     SharedPreferences.Editor cs = a19.edit();
                     cs.putInt("d19", 0);
                     cs.commit();*/
 
-
+                            }
                             Intent intent2 = new Intent(BaoyangList.this, UserActivity.class);
                             startActivity(intent2);
                             finish();
@@ -310,8 +357,7 @@ public class BaoyangList extends AppCompatActivity implements View.OnClickListen
                     alertbBuilder.show();
 
                 } else {
-                    SharedPreferences time = getSharedPreferences("shijian", Context.MODE_PRIVATE);
-                    time.edit().clear().commit();
+
                     Toast.makeText(getApplicationContext(), "提交数据为空，请选择保养项目！", Toast.LENGTH_LONG).show();
                 }
 

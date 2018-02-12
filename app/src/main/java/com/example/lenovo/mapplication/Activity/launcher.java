@@ -1,10 +1,14 @@
 package com.example.lenovo.mapplication.Activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.LauncherActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,12 +19,14 @@ import android.widget.LinearLayout;
 
 import com.example.lenovo.mapplication.R;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 
 
 public class launcher extends Activity {
     private LinearLayout Useract5;
     private long exitTime = 0;
+    String dir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/carfh/image/";
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -42,7 +48,9 @@ public class launcher extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+//创建相册目录
+        File file = new File(dir);
+        file.mkdirs();
 
 
 
@@ -79,7 +87,22 @@ public class launcher extends Activity {
             },time);
         }
 
+        //动态申请权限
+        if (Build.VERSION.SDK_INT >= 23) {
+            int REQUEST_CODE_CONTACT = 101;
+            String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+            //验证是否许可权限
+            for (String str : permissions) {
+                if (this.checkSelfPermission(str) != PackageManager.PERMISSION_GRANTED) {
+                    //申请权限
+                    this.requestPermissions(permissions, REQUEST_CODE_CONTACT);
+                    return;
+                }
+            }
+        }
+
     }
+
 
     //设置导航栏隐藏和滑动呼出
 

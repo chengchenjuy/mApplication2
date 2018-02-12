@@ -1,18 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.lenovo.mapplication"
     android:versionCode="1"
-    android:versionName="0.1">
+    android:versionName="0.1"
+    >
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permisssion.CAMERA"/>
+
+
+
+
+
 
     <application
         android:allowBackup="false"
+        tools:replace="android:allowBackup,android:label"
         android:allowClearUserData="true"
         android:gravity="center"
         android:icon="@mipmap/ic_launcher"
         android:label="车凤凰"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        >
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.lenovo.mapplication.car"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
         <activity
             android:name=".Activity.WelcomeActivity"
             android:alwaysRetainTaskState="true"
@@ -34,7 +56,9 @@
         <activity android:name=".Activity.launcher" />
         <activity android:name=".Activity.BaoyangReport" />
         <activity android:name=".Activity.BaoyangList" />
-        <activity android:name=".Activity.CarReg"></activity>
+        <activity android:name=".Activity.CarReg" />
+        <activity android:name=".Activity.zhaoxiang"></activity>
+
     </application>
 
 </manifest>

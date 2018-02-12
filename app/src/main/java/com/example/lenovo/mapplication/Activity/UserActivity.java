@@ -29,17 +29,21 @@ import com.example.lenovo.mapplication.R;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 import com.jude.rollviewpager.hintview.ColorPointHintView;
+import com.sunfusheng.marqueeview.MarqueeView;
+
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import static com.example.lenovo.mapplication.R.id;
 import static com.example.lenovo.mapplication.R.layout;
 import static com.example.lenovo.mapplication.R.mipmap;
 
 public class UserActivity extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
-    private ImageView btn_xiala, menu, baoyang;
+    private ImageView btn_xiala, menu, baoyang,baoyangjilu,weizhangchaxun,qichebaoxian,tejiashangpin,gerenxinxi;
     private LinearLayout xiala2, baoyng, weixiu, jiyou, lingjian, wheel, bbs, fenxiang, jianding, Useract;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
@@ -92,26 +96,36 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         View headerView = navigationView.getHeaderView(0);//获取头布局
         btn_xiala.setOnClickListener(this);
         xiala2 = findViewById(id.xiala2);
-        baoyng = findViewById(id.baoyng);
-        baoyng.setOnClickListener(this);
+//        baoyng = findViewById(id.baoyng);
+//        baoyng.setOnClickListener(this);
         cbJantou = findViewById(R.id.jiantou);
         cbJantou.setOnCheckedChangeListener(this);
-        weixiu = findViewById(id.weixiu);
-        weixiu.setOnClickListener(this);
-        jiyou = findViewById(id.jiyou);
-        jiyou.setOnClickListener(this);
-        lingjian = findViewById(id.lingjian);
-        lingjian.setOnClickListener(this);
-        wheel = findViewById(id.wheel);
-        wheel.setOnClickListener(this);
-        bbs = findViewById(id.bbs);
-        bbs.setOnClickListener(this);
-        fenxiang = findViewById(id.fenxiang);
-        fenxiang.setOnClickListener(this);
-        jianding = findViewById(id.jianding);
-        jianding.setOnClickListener(this);
+//        weixiu = findViewById(id.weixiu);
+//        weixiu.setOnClickListener(this);
+//        jiyou = findViewById(id.jiyou);
+//        jiyou.setOnClickListener(this);
+//        lingjian = findViewById(id.lingjian);
+//        lingjian.setOnClickListener(this);
+//        wheel = findViewById(id.wheel);
+//        wheel.setOnClickListener(this);
+//        bbs = findViewById(id.bbs);
+//        bbs.setOnClickListener(this);
+//        fenxiang = findViewById(id.fenxiang);
+//        fenxiang.setOnClickListener(this);
+//        jianding = findViewById(id.jianding);
+//        jianding.setOnClickListener(this);
         baoyangtime = findViewById(R.id.baoyangtime);
-        baoyangxiangmu = findViewById(id.baoyangxiangmu);
+//        baoyangxiangmu = findViewById(id.baoyangxiangmu);
+        baoyangjilu = findViewById(id.baoyangjilu);
+        baoyangjilu.setOnClickListener(this);
+        weizhangchaxun = findViewById(id.weizhangchaxun);
+        weizhangchaxun.setOnClickListener(this);
+        qichebaoxian = findViewById(id.qichebaoxian);
+        qichebaoxian.setOnClickListener(this);
+        tejiashangpin = findViewById(id.tejiashangpin);
+        tejiashangpin.setOnClickListener(this);
+        gerenxinxi = findViewById(id.gerenxinxi);
+        gerenxinxi.setOnClickListener(this);
         baoyangcishu = findViewById(id.baoyangcishu);
         driverkm = findViewById(id.driverkm);
         Useract = findViewById(id.Useract);
@@ -170,40 +184,40 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         SharedPreferences cs = getSharedPreferences("c19", Context.MODE_PRIVATE);
         int css = cs.getInt("d19", 0);
         baoyangcishu.setText("总计保养次数：" + css + "次");
-        SharedPreferences a1 = getSharedPreferences("c1", Context.MODE_PRIVATE);
-        String a = a1.getString("d1", "");
-        SharedPreferences a2 = getSharedPreferences("c2", Context.MODE_PRIVATE);
-        String b = a2.getString("d2", "");
-        SharedPreferences a3 = getSharedPreferences("c3", Context.MODE_PRIVATE);
-        String c = a3.getString("d3", "");
-        SharedPreferences a4 = getSharedPreferences("c4", Context.MODE_PRIVATE);
-        String d = a4.getString("d4", "");
-        SharedPreferences a5 = getSharedPreferences("c5", Context.MODE_PRIVATE);
-        String e = a5.getString("d5", "");
-        SharedPreferences a6 = getSharedPreferences("c6", Context.MODE_PRIVATE);
-        String f = a6.getString("d6", "");
-        SharedPreferences a7 = getSharedPreferences("c7", Context.MODE_PRIVATE);
-        String g = a7.getString("d7", "");
-        SharedPreferences a8 = getSharedPreferences("c8", Context.MODE_PRIVATE);
-        String h = a8.getString("d8", "");
-        SharedPreferences a9 = getSharedPreferences("c9", Context.MODE_PRIVATE);
-        String i = a9.getString("d9", "");
-        SharedPreferences a11 = getSharedPreferences("c11", Context.MODE_PRIVATE);
-        String j = a11.getString("d11", "");
-        SharedPreferences a12 = getSharedPreferences("c12", Context.MODE_PRIVATE);
-        String k = a12.getString("d12", "");
-        SharedPreferences a13 = getSharedPreferences("c13", Context.MODE_PRIVATE);
-        String l = a13.getString("d13", "");
-        SharedPreferences a14 = getSharedPreferences("c14", Context.MODE_PRIVATE);
-        String m = a14.getString("d14", "");
-        SharedPreferences a15 = getSharedPreferences("c15", Context.MODE_PRIVATE);
-        String n = a15.getString("d15", "");
-        SharedPreferences a16 = getSharedPreferences("c16", Context.MODE_PRIVATE);
-        String o = a16.getString("d16", "");
-        SharedPreferences a17 = getSharedPreferences("c17", Context.MODE_PRIVATE);
-        String p = a17.getString("d17", "");
-        SharedPreferences a18 = getSharedPreferences("c18", Context.MODE_PRIVATE);
-        String q = a18.getString("d18", "");
+//        SharedPreferences a1 = getSharedPreferences("c1", Context.MODE_PRIVATE);
+//        String a = a1.getString("d1", "");
+//        SharedPreferences a2 = getSharedPreferences("c2", Context.MODE_PRIVATE);
+//        String b = a2.getString("d2", "");
+//        SharedPreferences a3 = getSharedPreferences("c3", Context.MODE_PRIVATE);
+//        String c = a3.getString("d3", "");
+//        SharedPreferences a4 = getSharedPreferences("c4", Context.MODE_PRIVATE);
+//        String d = a4.getString("d4", "");
+//        SharedPreferences a5 = getSharedPreferences("c5", Context.MODE_PRIVATE);
+//        String e = a5.getString("d5", "");
+//        SharedPreferences a6 = getSharedPreferences("c6", Context.MODE_PRIVATE);
+//        String f = a6.getString("d6", "");
+//        SharedPreferences a7 = getSharedPreferences("c7", Context.MODE_PRIVATE);
+//        String g = a7.getString("d7", "");
+//        SharedPreferences a8 = getSharedPreferences("c8", Context.MODE_PRIVATE);
+//        String h = a8.getString("d8", "");
+//        SharedPreferences a9 = getSharedPreferences("c9", Context.MODE_PRIVATE);
+//        String i = a9.getString("d9", "");
+//        SharedPreferences a11 = getSharedPreferences("c11", Context.MODE_PRIVATE);
+//        String j = a11.getString("d11", "");
+//        SharedPreferences a12 = getSharedPreferences("c12", Context.MODE_PRIVATE);
+//        String k = a12.getString("d12", "");
+//        SharedPreferences a13 = getSharedPreferences("c13", Context.MODE_PRIVATE);
+//        String l = a13.getString("d13", "");
+//        SharedPreferences a14 = getSharedPreferences("c14", Context.MODE_PRIVATE);
+//        String m = a14.getString("d14", "");
+//        SharedPreferences a15 = getSharedPreferences("c15", Context.MODE_PRIVATE);
+//        String n = a15.getString("d15", "");
+//        SharedPreferences a16 = getSharedPreferences("c16", Context.MODE_PRIVATE);
+//        String o = a16.getString("d16", "");
+//        SharedPreferences a17 = getSharedPreferences("c17", Context.MODE_PRIVATE);
+//        String p = a17.getString("d17", "");
+//        SharedPreferences a18 = getSharedPreferences("c18", Context.MODE_PRIVATE);
+//        String q = a18.getString("d18", "");
 //        SimpleDateFormat nian = new SimpleDateFormat("yyyy");
 //        String datenian = nian.format(new java.util.Date());
 //        int dn = Integer.parseInt(datenian);
@@ -222,14 +236,14 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
        njtime.setText("上次年检时间："+nianjian);
        bxtime.setText("上次投保时间："+baoxian);
 
-if(!a.equals("")|!b.equals("")|!c.equals("")|!d.equals("")|!e.equals("")|!f.equals("")|!g.equals("")|!h.equals("")|!i.equals("")|!j.equals("")|!k.equals("")|!l.equals("")|!m.equals("")|!n.equals("")|!o.equals("")|!p.equals("")|!q.equals("")){
-        texts = a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q;
-        baoyangxiangmu.setText("上次保养项目：" + texts);}
-        else {
-    baoyangxiangmu.setText("上次保养项目：无记录");
-
-
-}
+//if(!a.equals("")|!b.equals("")|!c.equals("")|!d.equals("")|!e.equals("")|!f.equals("")|!g.equals("")|!h.equals("")|!i.equals("")|!j.equals("")|!k.equals("")|!l.equals("")|!m.equals("")|!n.equals("")|!o.equals("")|!p.equals("")|!q.equals("")){
+//        texts = a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q;
+//        baoyangxiangmu.setText("上次保养项目：" + texts);}
+//        else {
+//    baoyangxiangmu.setText("上次保养项目：无记录");
+//
+//
+//}
 
 
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -268,6 +282,18 @@ if(!a.equals("")|!b.equals("")|!c.equals("")|!d.equals("")|!e.equals("")|!f.equa
 //        int cc3 = Integer.parseInt(ri3) - day;
 
 
+        MarqueeView marqueeView = (MarqueeView) findViewById(R.id.marqueeView);
+
+        List<String> info = new ArrayList<>();
+        info.add("2018最新交规出炉，再不看100分也不够扣!");
+        info.add("注意！银川即将实行最新限号政策!");
+        info.add("小心翻车，冰雪天气行车注意事项!");
+        marqueeView.startWithList(info);
+
+// 在代码里设置自己的动画
+        marqueeView.startWithList(info, R.anim.anim_bottom_in, R.anim.anim_top_out);
+
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -278,7 +304,7 @@ if(!a.equals("")|!b.equals("")|!c.equals("")|!d.equals("")|!e.equals("")|!f.equa
 //                        Intent intent = new Intent(UserActivity.this, MainActivity.class);
 //                        startActivity(intent);
                         AlertDialog.Builder alertbBuilder = new AlertDialog.Builder(UserActivity.this);
-                        alertbBuilder.setTitle("提示").setMessage("确认退出？").setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        alertbBuilder.setTitle("提示").setMessage("确认退出登录？").setPositiveButton("确定", new DialogInterface.OnClickListener() {
 
 
                             public void onClick(DialogInterface dialog, int which) {
@@ -305,11 +331,11 @@ if(!a.equals("")|!b.equals("")|!c.equals("")|!d.equals("")|!e.equals("")|!f.equa
                         }).create();
                         alertbBuilder.show();
                         break;
-                    case id.myinf:
-                        Intent intent1 = new Intent(UserActivity.this, myinfo.class);
-                        startActivity(intent1);
-                        finish();
-                        break;
+//                    case id.myinf:
+//                        Intent intent1 = new Intent(UserActivity.this, myinfo.class);
+//                        startActivity(intent1);
+//                        finish();
+//                        break;
                     case id.report:
                         Intent intent2 = new Intent(UserActivity.this, BaoyangReport.class);
                         startActivity(intent2);
@@ -408,35 +434,49 @@ if(!a.equals("")|!b.equals("")|!c.equals("")|!d.equals("")|!e.equals("")|!f.equa
                     drawerLayout.openDrawer(navigationView);
                 }
                 break;
-
-            case id.baoyng:
-                Intent intent3 = new Intent(this, BaoyangList.class);
-                startActivity(intent3);
-                finish();
-                break;
-            case id.weixiu:
-                Intent intent4 = new Intent(this, repier.class);
+            case id.baoyangjilu:
+                Intent intent4 = new Intent(this,zhaoxiang.class);
                 startActivity(intent4);
                 break;
-            case id.jiyou:
-                Toast.makeText(getApplicationContext(), "该功能尚未开放，尽请期待", Toast.LENGTH_LONG).show();
+            case id.weizhangchaxun:
                 break;
-            case id.lingjian:
-                Intent intent = new Intent(this, baoyang.class);
-                startActivity(intent);
+            case id.qichebaoxian:
                 break;
-            case id.wheel:
-                Toast.makeText(getApplicationContext(), "该功能尚未开放，尽请期待", Toast.LENGTH_LONG).show();
+            case id.tejiashangpin:
                 break;
-            case id.fenxiang:
-                Toast.makeText(getApplicationContext(), "该功能尚未开放，尽请期待", Toast.LENGTH_LONG).show();
-                break;
-            case id.bbs:
-                Toast.makeText(getApplicationContext(), "该功能尚未开放，尽请期待", Toast.LENGTH_LONG).show();
-                break;
-            case id.jianding:
-                Toast.makeText(getApplicationContext(), "该功能尚未开放，尽请期待", Toast.LENGTH_LONG).show();
-                break;
+            case id.gerenxinxi:
+                Intent intent5 = new Intent(this,myinfo.class);
+                startActivity(intent5);
+                finish();
+
+//            case id.baoyng:
+//                Intent intent3 = new Intent(this, BaoyangList.class);
+//                startActivity(intent3);
+//                finish();
+//                break;
+//            case id.weixiu:
+//                Intent intent4 = new Intent(this, repier.class);
+//                startActivity(intent4);
+//                break;
+//            case id.jiyou:
+//                Toast.makeText(getApplicationContext(), "该功能尚未开放，尽请期待", Toast.LENGTH_LONG).show();
+//                break;
+//            case id.lingjian:
+//                Intent intent = new Intent(this, baoyang.class);
+//                startActivity(intent);
+//                break;
+//            case id.wheel:
+//                Toast.makeText(getApplicationContext(), "该功能尚未开放，尽请期待", Toast.LENGTH_LONG).show();
+//                break;
+//            case id.fenxiang:
+//                Toast.makeText(getApplicationContext(), "该功能尚未开放，尽请期待", Toast.LENGTH_LONG).show();
+//                break;
+//            case id.bbs:
+//                Toast.makeText(getApplicationContext(), "该功能尚未开放，尽请期待", Toast.LENGTH_LONG).show();
+//                break;
+//            case id.jianding:
+//                Toast.makeText(getApplicationContext(), "该功能尚未开放，尽请期待", Toast.LENGTH_LONG).show();
+//                break;
 
         }
     }

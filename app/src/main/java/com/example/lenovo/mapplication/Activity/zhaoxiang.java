@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -33,10 +34,9 @@ public class zhaoxiang extends AppCompatActivity {
     private final static int TAKE_PHOTO = 100;
     private final static int CHOOSE_PHOTO = 200;
     String dir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/carfh/image/";
-    private Uri imageUri, uri;
     private String mFilePath;
     private FileInputStream is = null;
-
+    private static final int IMAGE = 1;
     @TargetApi(18)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +45,7 @@ public class zhaoxiang extends AppCompatActivity {
         btn_takephoto = findViewById(R.id.btn_takephoto);
         btn_back = findViewById(R.id.btn_back);
         nearview = findViewById(R.id.nearview);
+        choosephoto = findViewById(R.id.choosephoto);
         //加载最后一张图片路径
         SharedPreferences uuri = getSharedPreferences("imageuri", Context.MODE_PRIVATE);
         String uri = uuri.getString("uris", "");
@@ -62,12 +63,26 @@ public class zhaoxiang extends AppCompatActivity {
         String fileName = simpleDate.format(now.getTime());
         mFilePath = dir + fileName + ".jpg";
         //设置按钮点击事件
+
+        //返回键
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
+        //打开相册
+        choosephoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, IMAGE);
+            }
+        });
+
+
+        //拍照
         btn_takephoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,6 +95,30 @@ public class zhaoxiang extends AppCompatActivity {
         });
 
     }
+    protected void onResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == IMAGE && resultCode == zhaoxiang.RESULT_OK && data != null) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumns = {MediaStore.Images.Media.DATA};
+            Cursor c = getContentResolver().query(selectedImage, filePathColumns, null, null, null);
+            c.moveToFirst();
+            int columnIndex = c.getColumnIndex(filePathColumns[0]);
+            String imagePath = c.getString(columnIndex);
+            Uri path = Uri.parse(imagePath);
+            nearview.setImageURI(path);
+            SharedPreferences imageuri = getSharedPreferences("imageuri", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = imageuri.edit();
+            editor.putString("uris", imagePath);
+            editor.commit();
+            c.close();
+        }
+    }
+
+
+
+
+
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

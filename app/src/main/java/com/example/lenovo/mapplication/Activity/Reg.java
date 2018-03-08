@@ -61,21 +61,39 @@ public class Reg extends AppCompatActivity implements View.OnClickListener {
                 int suijishu = (int) ((Math.random() * 9 + 1) * 100000);
                 yzm = Integer.toString(suijishu);
 
+ new CountDownTimer(3000,1000) {
+     @Override
+     public void onTick(long l) {
 
-                //实例化通知管理器
-                NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                //实例化通知
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
-                builder.setContentTitle("您获得的验证码");//设置通知标题
-                builder.setContentText("" + yzm);//设置通知内容
-                builder.setDefaults(NotificationCompat.DEFAULT_ALL);//设置通知的方式，震动、LED灯、音乐等
-                builder.setAutoCancel(true);//点击通知后，状态栏自动删除通知
-                builder.setSmallIcon(android.R.drawable.ic_media_play);//设置小图标
-                builder.setContentIntent(PendingIntent.getActivity(this, 0x102, new Intent(this, Reg.class), 0));//设置点击通知后将要启动的程序组件对应的PendingIntent
-                Notification notification = builder.build();
+     }
 
-                //发送通知
-                notificationManager.notify(0x101, notification);
+     @Override
+     public void onFinish() {
+//实例化通知管理器
+         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+         //实例化通知
+         NotificationCompat.Builder builder = new NotificationCompat.Builder(Reg.this);
+         builder.setContentTitle("您获得的验证码");//设置通知标题
+         builder.setContentText("" + yzm);//设置通知内容
+         builder.setDefaults(NotificationCompat.DEFAULT_ALL);//设置通知的方式，震动、LED灯、音乐等
+         builder.setAutoCancel(true);//点击通知后，状态栏自动删除通知
+         builder.setSmallIcon(R.mipmap.carlogo);//设置小图标
+//                builder.setContentIntent(PendingIntent.getActivity(this, 0x102, new Intent(this, Reg.class), 0));//设置点击通知后将要启动的程序组件对应的PendingIntent
+         Notification notification = builder.build();
+
+         //发送通知
+         notificationManager.notify(0x101, notification);
+         yanzheng.setText(yzm);
+     }
+ }.start();
+
+
+
+
+
+
+
+
 
                 new CountDownTimer(60000, 1000) {
 
